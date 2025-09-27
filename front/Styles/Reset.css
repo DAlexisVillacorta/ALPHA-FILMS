@@ -1,0 +1,44 @@
+/* Reset de estilos para mantener consistencia entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-size: 100%;
+    line-height: 1.5;
+}
+
+/* Quitar estilo por defecto de listas */
+ul, ol {
+    list-style: none;
+}
+
+/* Quitar subrayado y color por defecto de enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Asegurar que las imágenes no se salgan de su contenedor */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Quitar estilo por defecto de botones y formularios */
+button, input, textarea, select {
+    font: inherit;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* Asegurar consistencia en tablas */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "alpha-films",
+  "version": "1.0.0",
+  "description": "Pagina de peliculas creado con servidores",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "d": "^1.0.2",
+    "nodemon": "^3.1.10",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
+  }
+}
