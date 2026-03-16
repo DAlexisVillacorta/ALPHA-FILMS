@@ -2,171 +2,228 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Formulario Peliculas</title>
-    <link rel="stylesheet" href="../Styles/form.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Films — Añadir Película</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Styles (form.css last = highest priority) -->
     <link rel="stylesheet" href="../Styles/pagina.css">
-    <link rel="stylesheet" href="../Styles/Reset.css">
+    <link rel="stylesheet" href="../Styles/form.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="../Styles/Icono_A.png" alt="Logo">
+
+    <!-- Toast notifications -->
+    <div id="toast-container"></div>
+
+    <!-- Header (uses pagina.css classes) -->
+    <header id="main-header">
+        <div class="logo-section">
+            <div class="logo"></div>
+            <span class="brand-name">Alpha Films</span>
         </div>
-        <h3>Alpha Films</h3>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" href="https://es.wikipedia.org/wiki/Historia_del_cine">Historia del Cine</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sobre mi Proyecto</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../index.html">HOME</a>
-            </li>
-        </ul>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="https://es.wikipedia.org/wiki/Historia_del_cine" class="nav-link">Historia del Cine</a></li>
+                <li><a href="#" class="nav-link">Sobre el Proyecto</a></li>
+                <li><a href="../index.html" class="nav-link">Inicio</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="CajaDeLogin">
-        <h2>Añadir Peliculas</h2>
+    <!-- Main -->
+    <main class="form-page">
 
-        <div id="message" class="alert" style="display: none;"></div>
+        <!-- Form Card -->
+        <div class="form-card">
 
-        <form id="ingreso">
-            <div class="cajaUsuario">
-                <input type="text" name="" id="titulo" required>
-                <label>TITULO</label>
-            </div>
-
-            <div class="cajaUsuario">
-                <input type="number" name="" id="año" min="1900" max="2030" required>
-                <label>AÑO</label>
-            </div>
-
-            <div class="cajaUsuario">
-                <input type="text" name="" id="director" required>
-                <label>DIRECTOR</label>
-            </div>
-
-            <div class="cajaUsuario">
-                <input type="text" name="" id="duracion" placeholder="ej: 2h 16min" required>
-                <label>DURACION</label>
-            </div>
-
-            <div class="generos-section">
-                <label class="generos-title">GÉNEROS (selecciona uno o más):</label>
-                <div class="generos-grid">
-                    <div class="genero-item">
-                        <input type="checkbox" id="accion" name="genero" value="Action">
-                        <label for="accion">Acción</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="aventura" name="genero" value="Adventure">
-                        <label for="aventura">Aventura</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="comedia" name="genero" value="Comedy">
-                        <label for="comedia">Comedia</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="drama" name="genero" value="Drama">
-                        <label for="drama">Drama</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="fantasia" name="genero" value="Fantasy">
-                        <label for="fantasia">Fantasía</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="ciencia-ficcion" name="genero" value="Sci-Fi">
-                        <label for="ciencia-ficcion">Ciencia Ficción</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="thriller" name="genero" value="Thriller">
-                        <label for="thriller">Thriller</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="romance" name="genero" value="Romance">
-                        <label for="romance">Romance</label>
-                    </div>
-                    <div class="genero-item">
-                        <input type="checkbox" id="horror" name="genero" value="Horror">
-                        <label for="horror">Terror</label>
-                    </div>
+            <div class="form-card-header">
+                <div class="form-card-icon">
+                    <i class="fas fa-clapperboard"></i>
+                </div>
+                <div>
+                    <h2 class="form-card-title">Añadir Película</h2>
+                    <p class="form-card-subtitle">Completa los datos para agregar una película a la colección</p>
                 </div>
             </div>
 
-            <div class="cajaUsuario">
-                <input type="number" name="" id="rating" min="0" max="10" step="0.1" required>
-                <label>RATING (0-10)</label>
+            <form id="ingreso" novalidate>
+
+                <!-- Título -->
+                <div class="field-group anim-1">
+                    <i class="fas fa-film field-icon"></i>
+                    <input type="text" id="titulo" placeholder=" " required autocomplete="off">
+                    <label for="titulo">Título de la Película</label>
+                    <div class="field-underline"></div>
+                </div>
+
+                <!-- Año + Director -->
+                <div class="fields-row">
+                    <div class="field-group anim-2">
+                        <i class="fas fa-calendar-alt field-icon"></i>
+                        <input type="number" id="año" placeholder=" " min="1900" max="2030" required>
+                        <label for="año">Año</label>
+                        <div class="field-underline"></div>
+                    </div>
+                    <div class="field-group anim-3">
+                        <i class="fas fa-user-tie field-icon"></i>
+                        <input type="text" id="director" placeholder=" " required autocomplete="off">
+                        <label for="director">Director</label>
+                        <div class="field-underline"></div>
+                    </div>
+                </div>
+
+                <!-- Duración + Rating -->
+                <div class="fields-row">
+                    <div class="field-group anim-4">
+                        <i class="fas fa-clock field-icon"></i>
+                        <input type="text" id="duracion" placeholder=" " required autocomplete="off">
+                        <label for="duracion">Duración</label>
+                        <div class="field-underline"></div>
+                        <small class="field-hint">ej: 2h 16min</small>
+                    </div>
+                    <div class="field-group anim-5">
+                        <i class="fas fa-star field-icon"></i>
+                        <input type="number" id="rating" placeholder=" " min="0" max="10" step="0.1" required>
+                        <label for="rating">Rating (0–10)</label>
+                        <div class="field-underline"></div>
+                    </div>
+                </div>
+
+                <!-- Géneros -->
+                <div class="generos-section anim-6">
+                    <span class="generos-title">
+                        <i class="fas fa-tags"></i>&nbsp; Géneros — selecciona uno o más
+                    </span>
+                    <div class="generos-grid">
+                        <div class="genero-item">
+                            <input type="checkbox" id="accion" name="genero" value="Action">
+                            <label for="accion">Acción</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="aventura" name="genero" value="Adventure">
+                            <label for="aventura">Aventura</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="comedia" name="genero" value="Comedy">
+                            <label for="comedia">Comedia</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="drama" name="genero" value="Drama">
+                            <label for="drama">Drama</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="fantasia" name="genero" value="Fantasy">
+                            <label for="fantasia">Fantasía</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="ciencia-ficcion" name="genero" value="Sci-Fi">
+                            <label for="ciencia-ficcion">Ciencia Ficción</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="thriller" name="genero" value="Thriller">
+                            <label for="thriller">Thriller</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="romance" name="genero" value="Romance">
+                            <label for="romance">Romance</label>
+                        </div>
+                        <div class="genero-item">
+                            <input type="checkbox" id="horror" name="genero" value="Horror">
+                            <label for="horror">Terror</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poster URL -->
+                <div class="field-group anim-7">
+                    <i class="fas fa-image field-icon"></i>
+                    <input type="url" id="poster" placeholder=" " required autocomplete="off">
+                    <label for="poster">URL del Poster</label>
+                    <div class="field-underline"></div>
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions anim-8">
+                    <button type="submit" id="submitBtn" class="btn-form btn-submit">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Agregar Película</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                    <button type="button" id="clear" class="btn-form btn-clear">
+                        <i class="fas fa-rotate-left"></i>
+                        <span>Limpiar</span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- Poster Preview -->
+        <aside class="preview-panel">
+            <div class="poster-preview-wrapper">
+                <div class="poster-placeholder" id="poster-placeholder">
+                    <i class="fas fa-photo-film"></i>
+                    <span>Vista previa</span>
+                </div>
+                <img id="poster-preview-img" src="" alt="Poster preview">
             </div>
-
-            <div class="cajaUsuario">
-                <input type="url" name="" id="poster" required>
-                <label>POSTER (URL)</label>
+            <div class="preview-info">
+                <p class="preview-title-label">Película</p>
+                <h3 class="preview-title-text" id="preview-title-text">—</h3>
+                <div class="preview-meta">
+                    <span class="preview-badge" id="prev-year">—</span>
+                    <span class="preview-badge" id="prev-rating">—</span>
+                </div>
+                <p class="preview-director" id="prev-director"></p>
+                <p class="preview-duration" id="prev-duration"></p>
             </div>
+        </aside>
 
-            <button type="submit" id="submitBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Agregar Película
-            </button>
+    </main>
 
-            <button type="button" id="clear">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                Limpiar Formulario
-            </button>
-        </form>
-    </div>
-
-
-<footer class="bdark text-light py-5 mt-5 border-top border-secondary">
-    <div class="container-fluid px-4">
-        <div class="row justify-content-center">
-            <!-- Columna de Soporte -->
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div class="footer-column h-100 d-flex flex-column">
-                    <h4 class="text-danger fw-bold mb-3 text-uppercase">
-                        <i class="fas fa-headset me-2"></i>Soporte
-                    </h4>
-                    <ul class="list-unstyled footer-links flex-grow-1">
-                        <li class="mb-2">
-                            <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
-                                <i class="fas fa-question-circle me-2 text-muted"></i>
-                                Centro de ayuda
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
-                                <i class="fas fa-envelope me-2 text-muted"></i>
-                                Contacto
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
-                                <i class="fas fa-file-contract me-2 text-muted"></i>
-                                Términos de uso
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
-                                <i class="fas fa-shield-alt me-2 text-muted"></i>
-                                Privacidad
-                            </a>
-                        </li>
-                    </ul>
+    <!-- Footer -->
+    <footer class="bdark text-light py-5 mt-5 border-top border-secondary">
+        <div class="container-fluid px-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="footer-column h-100 d-flex flex-column">
+                        <h4 class="text-danger fw-bold mb-3 text-uppercase">
+                            <i class="fas fa-headset me-2"></i>Soporte
+                        </h4>
+                        <ul class="list-unstyled footer-links flex-grow-1">
+                            <li class="mb-2">
+                                <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
+                                    <i class="fas fa-question-circle me-2 text-muted"></i>Centro de ayuda
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
+                                    <i class="fas fa-envelope me-2 text-muted"></i>Contacto
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
+                                    <i class="fas fa-file-contract me-2 text-muted"></i>Términos de uso
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="#" class="text-light text-decoration-none d-flex align-items-center py-1 hover-link">
+                                    <i class="fas fa-shield-alt me-2 text-muted"></i>Privacidad
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="../public/form.bundle.js"></script>
 </body>
